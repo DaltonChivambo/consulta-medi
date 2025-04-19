@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Médicos - Sistema de Consultas Médicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Lista de Médicos</h2>
+            <a th:href="@{/medicos/novo}" class="btn btn-primary">Novo Médico</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CRM</th>
+                        <th>Especialidade</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="medico : ${medicos}">
+                        <td th:text="${medico.nome}"></td>
+                        <td th:text="${medico.crm}"></td>
+                        <td th:text="${medico.especialidade}"></td>
+                        <td th:text="${medico.email}"></td>
+                        <td th:text="${medico.telefone}"></td>
+                        <td>
+                            <span th:if="${medico.ativo}" class="badge bg-success">Ativo</span>
+                            <span th:unless="${medico.ativo}" class="badge bg-danger">Inativo</span>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a th:href="@{/medicos/{id}(id=${medico.id})}" class="btn btn-sm btn-info">Detalhes</a>
+                                <a th:href="@{/medicos/{id}/editar(id=${medico.id})}" class="btn btn-sm btn-primary">Editar</a>
+                                <form th:action="@{/medicos/bloquear}" method="post" class="d-inline">
+                                    <input type="hidden" name="id" th:value="${medico.id}"/>
+                                    <input type="hidden" name="ativo" th:value="${!medico.ativo}"/>
+                                    <button type="submit" class="btn btn-sm" 
+                                            th:classappend="${medico.ativo ? 'btn-danger' : 'btn-success'}"
+                                            th:text="${medico.ativo ? 'Desativar' : 'Ativar'}"
+                                            onclick="return confirm('Tem certeza que deseja alterar o status deste médico?')">
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

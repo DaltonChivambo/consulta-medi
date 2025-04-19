@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Médico - Sistema de Consultas Médicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Detalhes do Médico</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <strong>ID:</strong>
+                            </div>
+                            <div class="col-md-8">
+                                <span th:text="${medico.id}">ID do Médico</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <strong>Nome:</strong>
+                            </div>
+                            <div class="col-md-8">
+                                <span th:text="${medico.nome}">Nome do Médico</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <strong>CRM:</strong>
+                            </div>
+                            <div class="col-md-8">
+                                <span th:text="${medico.crm}">CRM</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <strong>Especialidade:</strong>
+                            </div>
+                            <div class="col-md-8">
+                                <span th:text="${medico.especialidade}">Especialidade</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <strong>Email:</strong>
+                            </div>
+                            <div class="col-md-8">
+                                <span th:text="${medico.email}">Email</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <strong>Telefone:</strong>
+                            </div>
+                            <div class="col-md-8">
+                                <span th:text="${medico.telefone}">Telefone</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <strong>Status:</strong>
+                            </div>
+                            <div class="col-md-8">
+                                <span th:if="${medico.ativo}" class="badge bg-success">Ativo</span>
+                                <span th:unless="${medico.ativo}" class="badge bg-danger">Inativo</span>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-between">
+                                    <a href="/medicos" class="btn btn-secondary">Voltar</a>
+                                    <div>
+                                        <a th:href="@{/medicos/{id}/editar(id=${medico.id})}" class="btn btn-warning">Editar</a>
+                                        <form th:action="@{/medicos/bloquear}" method="post" class="d-inline">
+                                            <input type="hidden" name="id" th:value="${medico.id}">
+                                            <input type="hidden" name="ativo" th:value="${!medico.ativo}">
+                                            <button type="submit" class="btn" 
+                                                    th:classappend="${medico.ativo ? 'btn-danger' : 'btn-success'}"
+                                                    th:text="${medico.ativo ? 'Desativar' : 'Ativar'}"
+                                                    onclick="return confirm('Tem certeza que deseja alterar o status deste médico?')">
+                                                Desativar
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

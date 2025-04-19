@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nova Consulta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Nova Consulta</h2>
+            <a th:href="@{/auth/logout}" class="btn btn-secondary">Sair</a>
+        </div>
+        
+        <form th:action="@{/consultas}" method="post" th:object="${consulta}">
+            <div class="form-group">
+                <label for="medico">Médico</label>
+                <select class="form-control" id="medico" th:field="*{medicoId}" required>
+                    <option value="">Selecione um médico</option>
+                    <option th:each="medico : ${medicos}"
+                            th:value="${medico.id}"
+                            th:text="${medico.nome + ' - ' + medico.especialidade}">
+                    </option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="date" class="form-control" id="data" th:field="*{data}" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="hora">Hora</label>
+                <input type="time" class="form-control" id="hora" th:field="*{hora}" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Agendar</button>
+            <a th:href="@{/consultas/minhas}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html> 

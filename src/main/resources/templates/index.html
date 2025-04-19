@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Consultas Médicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="display-4">Sistema de Consultas Médicas</h1>
+                <p class="lead">Bem-vindo ao nosso sistema de agendamento de consultas médicas.</p>
+            </div>
+        </div>
+
+        <div class="row mt-4" th:if="${session.usuario != null}">
+            <div class="col-md-4" th:if="${session.usuario.tipo == 'PACIENTE'}">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Minhas Consultas</h5>
+                        <p class="card-text">Visualize e gerencie suas consultas médicas.</p>
+                        <a href="/consultas" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" th:if="${session.usuario.tipo == 'MEDICO'}">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Consultas</h5>
+                        <p class="card-text">Gerencie suas consultas e agenda.</p>
+                        <a href="/consultas/medico" class="btn btn-primary">Acessar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" th:if="${session.usuario.tipo == 'ADMIN'}">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Administração</h5>
+                        <p class="card-text">Gerencie pacientes, médicos e consultas.</p>
+                        <div class="d-grid gap-2">
+                            <a href="/pacientes" class="btn btn-primary">Pacientes</a>
+                            <a href="/medicos" class="btn btn-primary">Médicos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

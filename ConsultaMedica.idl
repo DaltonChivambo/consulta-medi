@@ -1,0 +1,50 @@
+module ConsultaApp {
+    struct Consulta {
+        string id;
+        string pacienteNome;
+        string medicoNome;
+        string data;
+        string hora;
+        string status; // "AGENDADA", "CONCLUIDA", "CANCELADA"
+        string especialidade;
+        string observacoes;
+    };
+
+    struct Medico {
+        string id;
+        string nome;
+        string especialidade;
+        string crm;
+        string email;
+        string telefone;
+    };
+
+    struct Paciente {
+        string id;
+        string nome;
+        string cpf;
+        string email;
+        string telefone;
+        string dataNascimento;
+    };
+
+    typedef sequence<Consulta> ConsultaSeq;
+    typedef sequence<Medico> MedicoSeq;
+    typedef sequence<Paciente> PacienteSeq;
+
+    interface ConsultaMedica {
+        Consulta agendarConsulta(in string pacienteId, in string medicoId, in string data, in string hora, in string especialidade);
+        Consulta agendarConsultaComId(in string consultaId, in string pacienteId, in string pacienteNome, in string medicoId, in string medicoNome, in string data, in string hora, in string especialidade, in string status);
+        boolean cancelarConsulta(in string consultaId);
+        Consulta getConsulta(in string consultaId);
+        ConsultaSeq getConsultasPorPaciente(in string pacienteId);
+        ConsultaSeq getConsultasPorMedico(in string medicoId);
+        ConsultaSeq getConsultasPorData(in string data);
+        MedicoSeq getMedicosPorEspecialidade(in string especialidade);
+        Medico getMedico(in string medicoId);
+        Paciente getPaciente(in string pacienteId);
+        PacienteSeq getPacientes();
+        MedicoSeq getMedicos();
+        Consulta atualizarConsulta(in string consultaId, in string status);
+    };
+}; 

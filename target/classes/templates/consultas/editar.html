@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Editar Consulta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Editar Consulta</h2>
+        <form th:action="@{/consultas/{id}(id=${consulta.id})}" method="post" th:object="${consulta}">
+            <input type="hidden" name="_method" value="put"/>
+            
+            <div class="form-group">
+                <label for="paciente">Paciente</label>
+                <input type="text" class="form-control" id="paciente" th:value="${consulta.pacienteNome}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="medico">Médico</label>
+                <input type="text" class="form-control" id="medico" th:value="${consulta.medicoNome}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="data">Data</label>
+                <input type="date" class="form-control" id="data" th:value="${consulta.data}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="hora">Hora</label>
+                <input type="time" class="form-control" id="hora" th:value="${consulta.hora}" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" th:field="*{status}" required>
+                    <option value="AGENDADA">Agendada</option>
+                    <option value="CONCLUIDA">Concluída</option>
+                    <option value="CANCELADA">Cancelada</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a th:href="@{/consultas/medico}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Erro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-4">Ops!</h1>
+            <p class="lead">Ocorreu um erro ao processar sua requisição.</p>
+            <p th:text="${message}" class="text-danger"></p>
+            <a th:href="@{/}" class="btn btn-primary">Voltar para a página inicial</a>
+        </div>
+    </div>
+</body>
+</html> 

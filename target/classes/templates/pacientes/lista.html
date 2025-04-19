@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacientes - Sistema de Consultas Médicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Lista de Pacientes</h2>
+            <a href="/pacientes/novo" class="btn btn-primary">Novo Paciente</a>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Data de Nascimento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="paciente : ${pacientes}">
+                        <td th:text="${paciente.nome}">Nome do Paciente</td>
+                        <td th:text="${paciente.cpf}">CPF</td>
+                        <td th:text="${paciente.email}">Email</td>
+                        <td th:text="${paciente.telefone}">Telefone</td>
+                        <td th:text="${#dates.format(paciente.dataNascimento, 'dd/MM/yyyy')}">Data de Nascimento</td>
+                        <td>
+                            <div class="btn-group">
+                                <a th:href="@{/pacientes/{id}(id=${paciente.id})}" class="btn btn-sm btn-info">Detalhes</a>
+                                <a th:href="@{/pacientes/{id}/editar(id=${paciente.id})}" class="btn btn-sm btn-warning">Editar</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

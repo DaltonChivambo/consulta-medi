@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header Fragment</title>
+</head>
+<body>
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="/">Sistema de Consultas Médicas</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item" th:if="${session.usuario != null}">
+                            <a class="nav-link" href="/">Início</a>
+                        </li>
+                        <li class="nav-item" th:if="${session.usuario != null && session.usuario.tipo == 'PACIENTE'}">
+                            <a class="nav-link" href="/consultas">Minhas Consultas</a>
+                        </li>
+                        <li class="nav-item" th:if="${session.usuario != null && session.usuario.tipo == 'MEDICO'}">
+                            <a class="nav-link" href="/consultas/medico">Consultas</a>
+                        </li>
+                        <li class="nav-item" th:if="${session.usuario != null && session.usuario.tipo == 'ADMIN'}">
+                            <a class="nav-link" href="/pacientes">Pacientes</a>
+                        </li>
+                        <li class="nav-item" th:if="${session.usuario != null && session.usuario.tipo == 'ADMIN'}">
+                            <a class="nav-link" href="/medicos">Médicos</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex align-items-center">
+                        <span class="text-light me-3" th:if="${session.usuario != null}">
+                            Bem-vindo, <span th:text="${session.usuario.nome}">Usuário</span>
+                        </span>
+                        <div th:if="${session.usuario == null}">
+                            <a href="/auth/login" class="btn btn-outline-light me-2">Entrar</a>
+                            <a href="/auth/registro" class="btn btn-light">Registrar</a>
+                        </div>
+                        <a th:if="${session.usuario != null}" href="/auth/logout" class="btn btn-outline-light">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+</body>
+</html> 

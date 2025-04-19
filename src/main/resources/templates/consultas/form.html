@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nova Consulta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Nova Consulta</h1>
+        
+        <form th:action="@{/consultas}" method="post" th:object="${consulta}" class="mt-4">
+            <div class="mb-3">
+                <label for="pacienteNome" class="form-label">Paciente</label>
+                <select class="form-select" id="pacienteNome" th:field="*{pacienteNome}" required>
+                    <option value="">Selecione um paciente</option>
+                    <option th:each="paciente : ${pacientes}"
+                            th:value="${paciente.nome}"
+                            th:text="${paciente.nome}">
+                    </option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label for="medicoNome" class="form-label">Médico</label>
+                <select class="form-select" id="medicoNome" th:field="*{medicoNome}" required>
+                    <option value="">Selecione um médico</option>
+                    <option th:each="medico : ${medicos}"
+                            th:value="${medico.nome}"
+                            th:text="${medico.nome + ' - ' + medico.especialidade}">
+                    </option>
+                </select>
+            </div>
+            
+            <div class="mb-3">
+                <label for="data" class="form-label">Data</label>
+                <input type="date" class="form-control" id="data" th:field="*{data}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="hora" class="form-label">Hora</label>
+                <input type="time" class="form-control" id="hora" th:field="*{hora}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="especialidade" class="form-label">Especialidade</label>
+                <input type="text" class="form-control" id="especialidade" th:field="*{especialidade}" readonly>
+            </div>
+            
+            <div class="mb-3">
+                <label for="observacoes" class="form-label">Observações</label>
+                <textarea class="form-control" id="observacoes" th:field="*{observacoes}" rows="3"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Agendar</button>
+            <a href="/consultas" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Atualiza a especialidade quando um médico é selecionado
+        document.getElementById('medicoNome').addEventListener('change', function() {
+            const medicoSelect = this;
+            const especialidadeInput = document.getElementById('especialidade');
+            const selectedOption = medicoSelect.options[medicoSelect.selectedIndex];
+            
+            if (selectedOption.value) {
+                const especialidade = selectedOption.text.split(' - ')[1];
+                especialidadeInput.value = especialidade;
+            } else {
+                especialidadeInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html> 
