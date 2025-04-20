@@ -50,6 +50,7 @@ ConsultaApp/Paciente.class
 com/example/consulta/ConsultaMedicaServer.class
 ConsultaApp/MedicoHolder.class
 ConsultaApp/ConsultaSeqHolder.class
+com/example/consulta/model/AuthResult.class
 com/example/config/MongoConfig.class
 com/example/consulta/exception/ConsultaNotFoundException.class
 ConsultaApp/Medico.class

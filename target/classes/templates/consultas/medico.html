@@ -2,52 +2,399 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Minhas Consultas - Sistema de Consultas Médicas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Consultas - ConsultaMedi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4e73df;
+            --primary-dark: #3a56b2;
+            --accent: #1cc88a;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --light: #f8f9fc;
+            --dark: #2e2e2e;
+            --gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            min-height: 100vh;
+        }
+
+        .container {
+            padding: 2rem 1.5rem;
+        }
+
+        .consultation-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(78, 115, 223, 0.1);
+        }
+
+        .consultation-header h2 {
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .consultation-header h2 i {
+            margin-right: 12px;
+        }
+
+        .consultation-table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        .consultation-table {
+            width: 100%;
+        }
+
+        .consultation-table thead th {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 500;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            white-space: nowrap;
+        }
+
+        .consultation-table tbody tr {
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .consultation-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .consultation-table tbody tr:hover {
+            background-color: rgba(78, 115, 223, 0.05);
+        }
+
+        .consultation-table tbody td {
+            padding: 1rem;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .status-badge {
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+        }
+
+        .status-badge i {
+            margin-right: 6px;
+        }
+
+        .badge-agendada {
+            background-color: rgba(78, 115, 223, 0.1);
+            color: var(--primary);
+        }
+
+        .badge-concluida {
+            background-color: rgba(28, 200, 138, 0.1);
+            color: var(--accent);
+        }
+
+        .badge-cancelada {
+            background-color: rgba(231, 74, 59, 0.1);
+            color: var(--danger);
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+            color: white;
+            margin: 0 4px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-details {
+            background-color: var(--gray);
+        }
+
+        .btn-edit {
+            background-color: var(--primary);
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .search-input {
+            padding-left: 3rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input:focus {
+            background-color: white;
+            color: var(--dark);
+            border-color: white;
+            box-shadow: none;
+        }
+
+        .search-input:focus::placeholder {
+            color: var(--gray);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+        .btn-new-consultation {
+            background-color: white;
+            color: var(--primary);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            border: none;
+        }
+
+        .btn-new-consultation:hover {
+            background-color: white;
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-new-consultation i {
+            margin-right: 8px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .consultation-header {
+                padding: 1.25rem;
+            }
+
+            .consultation-header h2 {
+                font-size: 1.25rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .consultation-table-container {
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .consultation-table thead th {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .consultation-table tbody td {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .status-badge {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .action-btn {
+                width: 36px;
+                height: 36px;
+                margin: 0 2px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .consultation-table thead th {
+                padding: 1rem 1.5rem;
+            }
+
+            .consultation-table tbody td {
+                padding: 1rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div th:replace="fragments/header :: header"></div>
 
-    <div class="container mt-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Minhas Consultas</h2>
+    <div class="container py-4">
+        <div class="consultation-header">
+            <div class="d-flex flex-column flex-md-row gap-2 justify-content-between align-items-center header-content">
+                <h2 class="mb-3 mb-md-0">
+                    <i class="fas fa-calendar-check"></i> Consultas
+                </h2>
+                <div class="d-flex flex-column flex-md-row gap-3 align-items-stretch w-100 w-md-auto">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="form-control search-input" placeholder="Pesquisar consultas..." id="searchInput">
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Paciente</th>
-                        <th>Data</th>
-                        <th>Hora</th>
-                        <th>Status</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="consulta : ${consultas}">
-                        <td th:text="${consulta.id}"></td>
-                        <td th:text="${consulta.pacienteNome}"></td>
-                        <td th:text="${consulta.data}"></td>
-                        <td th:text="${consulta.hora}"></td>
-                        <td>
-                            <span th:if="${consulta.status == 'AGENDADA'}" class="badge bg-primary">Agendada</span>
-                            <span th:if="${consulta.status == 'CONCLUIDA'}" class="badge bg-success">Concluída</span>
-                            <span th:if="${consulta.status == 'CANCELADA'}" class="badge bg-danger">Cancelada</span>
-                        </td>
-                        <td>
-                            <div class="btn-group">
-                                <a th:href="@{/consultas/{id}(id=${consulta.id})}" class="btn btn-sm btn-info">Detalhes</a>
-                                <a th:href="@{/consultas/{id}/editar(id=${consulta.id})}" class="btn btn-sm btn-primary">Alterar Status</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
+        <div class="consultation-table-container">
+            <div class="table-responsive">
+                <table class="consultation-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-id-badge me-2"></i>ID</th>
+                            <th><i class="fas fa-user-injured me-2"></i>Paciente</th>
+                            <th><i class="fas fa-calendar-day me-2"></i>Data</th>
+                            <th><i class="fas fa-clock me-2"></i>Hora</th>
+                            <th><i class="fas fa-info-circle me-2"></i>Status</th>
+                            <th class="text-end"><i class="fas fa-ellipsis-h me-2"></i>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="consulta : ${consultas}" th:classappend="${consulta.status == 'CANCELADA'} ? 'text-muted' : ''">
+                            <td th:text="${consulta.id}"></td>
+                            <td th:text="${consulta.pacienteNome}"></td>
+                            <td th:text="${consulta.data}"></td>
+                            <td th:text="${consulta.hora}"></td>
+                            <td>
+                                <span th:if="${consulta.status == 'AGENDADA'}" class="status-badge badge-agendada">
+                                    <i class="fas fa-clock"></i> Agendada
+                                </span>
+                                <span th:if="${consulta.status == 'CONCLUIDA'}" class="status-badge badge-concluida">
+                                    <i class="fas fa-check-circle"></i> Concluída
+                                </span>
+                                <span th:if="${consulta.status == 'CANCELADA'}" class="status-badge badge-cancelada">
+                                    <i class="fas fa-times-circle"></i> Cancelada
+                                </span>
+                            </td>
+                            <td class="text-end">
+                                <div class="d-flex justify-content-end">
+                                    <a th:href="@{/consultas/{id}(id=${consulta.id})}" 
+                                       class="action-btn btn-details"
+                                       data-bs-toggle="tooltip" 
+                                       data-bs-placement="top" 
+                                       title="Ver detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a th:href="@{/consultas/{id}/editar(id=${consulta.id})}" 
+                                       class="action-btn btn-edit"
+                                       data-bs-toggle="tooltip" 
+                                       data-bs-placement="top" 
+                                       title="Alterar status da consulta">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr th:if="${consultas.empty}">
+                            <td colspan="6" class="empty-state">
+                                <i class="fas fa-calendar-times"></i>
+                                <h4>Nenhuma consulta encontrada</h4>
+                                <p>Você ainda não possui consultas agendadas</p>
+                                <a href="/consultas/nova" class="btn btn-primary mt-2">
+                                    <i class="fas fa-plus me-2"></i>Agendar Consulta
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função de busca
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            let hasResults = false;
+            
+            rows.forEach(row => {
+                if (row.cells) { // Ignora a linha de estado vazio
+                    const text = row.textContent.toLowerCase();
+                    const isMatch = text.includes(searchValue);
+                    row.style.display = isMatch ? '' : 'none';
+                    if (isMatch) hasResults = true;
+                }
+            });
+
+            // Mostra mensagem se não houver resultados
+            const emptyState = document.querySelector('.empty-state');
+            if (emptyState) {
+                emptyState.style.display = hasResults || searchValue === '' ? 'none' : '';
+            }
+        });
+
+        // Inicializa tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
 </body>
-</html> 
+</html>

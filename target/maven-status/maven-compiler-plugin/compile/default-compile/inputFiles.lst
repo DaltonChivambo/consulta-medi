@@ -1,58 +1,58 @@
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/controller/WebController.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/ConsultaMedicaImpl.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/Medico.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/_ConsultaMedicaStub.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/Consulta.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/exception/MongoDBException.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/model/Medico.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaMedicaOperations.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/repository/PacienteMongoRepository.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/service/SincronizacaoService.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/repository/MedicoMongoRepository.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/model/MedicoMongo.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/MedicoHolder.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/controller/ConsultaController.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/model/Consulta.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaMedicaHelper.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/exception/ConsultaNotFoundException.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/MedicoSeqHelper.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/MedicoHelper.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/service/AuthService.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/model/Usuario.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/Paciente.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/service/PacienteMongoService.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/exception/GlobalExceptionHandler.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/ConsultaMedicaServer.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaMedicaHolder.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/PacienteSeqHolder.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/repository/ConsultaMongoRepository.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaSeqHelper.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/repository/UsuarioRepository.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/service/ConsultaMongoService.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/PacienteSeqHelper.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/controller/MedicoController.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaSeqHolder.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/config/MongoConfig.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/model/AuthResult.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/service/ConsultaService.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaMedica.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/model/Paciente.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaMedicaPOA.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/MedicoSeqHolder.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/controller/PacienteController.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/config/MongoIndexConfig.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/server/ConsultaMedicaServer.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/service/MedicoMongoService.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/controller/ConsultaMongoController.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/config/DataInitializer.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaHelper.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/PacienteHelper.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/model/PacienteMongo.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/ConsultaHolder.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/ConsultaApp/PacienteHolder.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/config/SecurityConfig.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/model/ConsultaMongo.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/config/CorbaConfig.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/consulta/controller/AuthController.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/Application.java
-/home/black/Documents/SD/test-mediapp/consulta-medi-v2.0.1.3/src/main/java/com/example/config/WebConfig.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/config/MongoIndexConfig.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaHolder.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/controller/MedicoController.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/MedicoSeqHolder.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/MedicoSeqHelper.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/config/DataInitializer.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/config/WebConfig.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/PacienteHolder.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/service/ConsultaService.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/exception/ConsultaNotFoundException.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/model/Paciente.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/Application.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/repository/PacienteMongoRepository.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/Paciente.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/repository/UsuarioRepository.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/model/Consulta.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/controller/ConsultaMongoController.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaSeqHolder.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/Consulta.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/PacienteSeqHolder.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/repository/ConsultaMongoRepository.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaSeqHelper.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaMedicaHelper.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/Medico.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaMedica.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/PacienteSeqHelper.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/service/SincronizacaoService.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/config/CorbaConfig.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaMedicaPOA.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/service/AuthService.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/model/Medico.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/controller/AuthController.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/model/AuthResult.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/model/PacienteMongo.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/model/ConsultaMongo.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/controller/WebController.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaMedicaOperations.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/service/PacienteMongoService.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/exception/GlobalExceptionHandler.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/MedicoHolder.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/service/ConsultaMongoService.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/model/MedicoMongo.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/server/ConsultaMedicaServer.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/controller/PacienteController.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/ConsultaMedicaImpl.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/model/Usuario.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaHelper.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/ConsultaMedicaServer.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/ConsultaMedicaHolder.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/controller/ConsultaController.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/_ConsultaMedicaStub.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/repository/MedicoMongoRepository.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/config/MongoConfig.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/PacienteHelper.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/exception/MongoDBException.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/service/MedicoMongoService.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/com/example/consulta/config/SecurityConfig.java
+/home/black/Documents/SD/funciona/00 - stable/00 - stable main/consulta-medi-stable-v1.0.0/src/main/java/ConsultaApp/MedicoHelper.java

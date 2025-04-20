@@ -1,113 +1,158 @@
-# Sistema de Consultas Médicas
+# 🏥 Sistema de Consultas Médicas
 
-Este é um sistema de gerenciamento de consultas médicas desenvolvido em Java utilizando Spring Boot, MongoDB e CORBA.
+Sistema de gerenciamento de consultas médicas utilizando Java, Spring Boot, MongoDB e CORBA, Java 8. Esta aplicação permite agendar, cancelar e visualizar consultas de forma eficiente por meio de uma interface web.
 
-## Requisitos do Sistema
+---
 
-- Java 8 ou superior
-- Maven 3.6 ou superior
-- MongoDB instalado e rodando
-- Terminal/Console para executar comandos
+## 📋 Requisitos
 
-## Estrutura do Projeto
+- **Java** 8 (com suporte nativo a CORBA)  
+- **Maven** 3.6 ou superior  
+- **MongoDB** instalado e rodando (`localhost:27017`)  
+- **Terminal** ou console para execução dos comandos  
 
-O projeto é dividido em três componentes principais:
+---
 
-1. **Servidor CORBA (ConsultaMedicaServer)**: Responsável por gerenciar as consultas médicas
-2. **Serviço de Nomes CORBA (orbd)**: Necessário para registro e descoberta de serviços
-3. **Aplicação Web (Spring Boot)**: Interface web para interação com o sistema
+## 🗂 Estrutura do Projeto
 
-## Configuração e Execução
+```
+consulta-medi/
+├── ConsultaMedica.idl         # Interface CORBA
+├── pom.xml                    # Configurações do Maven
+├── README.md                  # Documentação do projeto
+├── target/                    # Build da aplicação
+│   └── consulta-medica-1.0-SNAPSHOT.jar
+├── src/
+│   ├── main/
+│   │   ├── java/com/example/  # Código fonte (server, controller, model, etc.)
+│   │   ├── resources/
+│   │   │   ├── application.properties
+│   │   │   └── templates/     # HTMLs com Thymeleaf
+```
 
-### 1. Iniciar o MongoDB
+---
 
-Certifique-se que o MongoDB está instalado e rodando. Por padrão, o sistema espera que o MongoDB esteja rodando em `localhost:27017`.
+## ⚙️ Configuração e Execução
 
-### 2. Iniciar o Serviço de Nomes CORBA (orbd)
+### 1. Suba o MongoDB
 
-Execute o seguinte comando em um terminal:
+Certifique-se de que o MongoDB está em execução no host padrão:
+
+```bash
+sudo systemctl start mongod
+```
+
+---
+
+### 2. Inicie o Serviço de Nomes CORBA (orbd)
 
 ```bash
 orbd -ORBInitialPort 1050 &
 ```
 
-Este comando inicia o serviço de nomes CORBA na porta 1050.
+---
 
-### 3. Iniciar o Servidor de Consultas
+### 3. Compile o Projeto
 
-Em um novo terminal, execute:
+```bash
+mvn clean install
+```
+
+---
+
+### 4. Inicie o Servidor CORBA
 
 ```bash
 java -cp target/classes com.example.server.ConsultaMedicaServer -ORBInitialPort 1050 &
 ```
 
-Você deve ver a mensagem "Servidor ConsultaMedica pronto e aguardando requisições..." quando o servidor estiver pronto.
+Você verá a mensagem:
 
-### 4. Iniciar a Aplicação Web
+```
+Servidor ConsultaMedica pronto e aguardando requisições...
+```
 
-Em um novo terminal, execute:
+---
+
+### 5. Inicie a Aplicação Web (Spring Boot)
 
 ```bash
 mvn spring-boot:run
 ```
 
-A aplicação estará disponível em `http://localhost:8080`
+Acesse: [http://localhost:8080](http://localhost:8080)
+ou (http://ip_do_seu_dispositivo_na_rede:8080)
 
-## Funcionalidades
+---
 
-- Agendamento de consultas
-- Cancelamento de consultas
-- Atualização de status de consultas
-- Visualização de consultas por paciente
-- Visualização de consultas por médico
-- Gerenciamento de médicos e pacientes
+## ✅ Funcionalidades
 
-## Arquitetura
+- 📅 Agendamento de consultas  
+- ❌ Cancelamento de consultas  
+- 🔄 Atualização de status  
+- 🔍 Visualização por paciente  
+- 👨‍⚕️ Visualização por médico  
+- 👥 Gerenciamento de médicos e pacientes  
 
-O sistema utiliza uma arquitetura distribuída com:
+---
 
-- **Frontend**: Thymeleaf (templates HTML)
-- **Backend**: Spring Boot
-- **Banco de Dados**: MongoDB
-- **Comunicação Distribuída**: CORBA
+## 🧱 Arquitetura
 
-## Dependências Principais
+- **Frontend**: Thymeleaf + HTML  
+- **Backend**: Spring Boot (Java)  
+- **Banco de Dados**: MongoDB  
+- **Comunicação**: CORBA puro (Java 8)  
 
-- Spring Boot 2.7.0
-- Spring Data MongoDB
-- GlassFish CORBA ORB
-- Lombok
-- Thymeleaf
+---
 
-## Solução de Problemas
+## 📦 Dependências
 
-### Erro "Falha ao atualizar consulta"
+- Spring Boot 2.7.0  
+- Spring Data MongoDB  
+- Thymeleaf  
+- Lombok  
 
-Este erro geralmente ocorre quando:
-1. O serviço de nomes CORBA (orbd) não está rodando
-2. O servidor de consultas não está rodando
-3. Há problemas de conexão entre os componentes
+---
 
-Para resolver:
-1. Verifique se o orbd está rodando: `ps aux | grep orbd`
-2. Verifique se o servidor de consultas está rodando: `ps aux | grep ConsultaMedicaServer`
-3. Se necessário, reinicie os serviços na ordem correta
+## 🛠 Solução de Problemas
 
-### Erro de Conexão com MongoDB
+### ❗ Falha ao atualizar consulta
 
-Verifique se:
-1. O MongoDB está instalado e rodando
-2. A conexão está configurada corretamente no `application.properties`
+Verifique:
+1. Se o serviço **orbd** está ativo:  
+   `ps aux | grep orbd`
+2. Se o servidor CORBA foi iniciado:  
+   `ps aux | grep ConsultaMedicaServer`
+3. Reinicie os serviços na ordem: orbd → servidor → aplicação
 
-## Contribuição
+---
 
-Para contribuir com o projeto:
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature
-3. Faça commit das suas alterações
-4. Push para a branch
-5. Abra um Pull Request
+> 🧪 Testado e validado no **Ubuntu 24.04 LTS**
 
-## Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes. 
+
+### ❗ Erro de conexão com MongoDB
+
+Confirme:
+- Se o MongoDB está rodando  
+- Se a URL está correta no `application.properties`:  
+  ```
+  spring.data.mongodb.uri=mongodb://localhost:27017/consulta_db
+  ```
+
+---
+
+## 🤝 Contribuição
+
+1. Fork o projeto  
+2. Crie uma branch: `feature/sua-feature`  
+3. Commit e push das alterações  
+4. Abra um Pull Request  
+
+---
+
+## 📄 Licença
+
+Distribuído sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+

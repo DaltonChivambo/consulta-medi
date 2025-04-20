@@ -2,45 +2,337 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Consultas Médicas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta-Medi | Sistema de Agendamento Médico</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4e73df;
+            --primary-dark: #3a56b2;
+            --accent: #1cc88a;
+            --accent-dark: #17a673;
+            --light: #f8f9fc;
+            --dark: #2e2e2e;
+            --gray: #6c757d;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--light);
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-weight: 700;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .btn-hero {
+            border-radius: 50px;
+            padding: 0.75rem 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .feature-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+            background: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.75rem;
+            color: white;
+            background: var(--primary);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        /* Dashboard Section */
+        .dashboard {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .user-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+            background: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .user-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .patient-icon {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+        }
+        
+        .doctor-icon {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+        }
+        
+        .admin-icon {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border: none;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #bbb;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        footer a {
+            color: #bbb;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero::before {
+                bottom: -30px;
+                height: 60px;
+            }
+            
+            .features, .dashboard {
+                padding: 3rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div th:replace="fragments/header :: header"></div>
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="display-4">Sistema de Consultas Médicas</h1>
-                <p class="lead">Bem-vindo ao nosso sistema de agendamento de consultas médicas.</p>
+    <!-- Hero Section (for non-logged users) -->
+    <section class="hero" th:if="${session.usuario == null}">
+        <div class="container">
+            <h1 class="hero-title">Consulta-Medi</h1>
+            <p class="hero-subtitle">Sistema completo para agendamento e gestão de consultas médicas</p>
+            <div>
+                <a href="/auth/login" class="btn btn-light btn-hero">Entrar</a>
+                <a href="/auth/registro" class="btn btn-outline-light btn-hero">Criar conta</a>
             </div>
         </div>
+    </section>
 
-        <div class="row mt-4" th:if="${session.usuario != null}">
-            <div class="col-md-4" th:if="${session.usuario.tipo == 'PACIENTE'}">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Minhas Consultas</h5>
-                        <p class="card-text">Visualize e gerencie suas consultas médicas.</p>
-                        <a href="/consultas" class="btn btn-primary">Acessar</a>
+    <!-- Features Section (for non-logged users) -->
+    <section class="features" th:if="${session.usuario == null}">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Nossos Recursos</h2>
+                </div>
+            </div>
+            
+            <div class="row gy-4">
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="feature-title">Agendamento Online</h3>
+                        <p>Agende consultas de forma rápida e prática, sem necessidade de ligações ou espera.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <h3 class="feature-title">Prontuário Eletrônico</h3>
+                        <p>Acesso seguro ao seu histórico médico e resultados de exames em um só lugar.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3 class="feature-title">Lembretes Automáticos</h3>
+                        <p>Receba notificações por e-mail e SMS para nunca mais esquecer uma consulta.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" th:if="${session.usuario.tipo == 'MEDICO'}">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Consultas</h5>
-                        <p class="card-text">Gerencie suas consultas e agenda.</p>
-                        <a href="/consultas/medico" class="btn btn-primary">Acessar</a>
-                    </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section (for logged users) -->
+    <section class="dashboard" th:if="${session.usuario != null}">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title">Bem-vindo ao Consulta-Medi</h2>
+                    <p class="lead">Gerencie suas consultas médicas de forma simples e eficiente</p>
                 </div>
             </div>
-            <div class="col-md-4" th:if="${session.usuario.tipo == 'ADMIN'}">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Administração</h5>
-                        <p class="card-text">Gerencie pacientes, médicos e consultas.</p>
-                        <div class="d-grid gap-2">
+            
+            <div class="row gy-4 justify-content-center">
+                <!-- Paciente Card -->
+                <div class="col-lg-4 col-md-6" th:if="${session.usuario.tipo == 'PACIENTE'}">
+                    <div class="user-card">
+                        <div class="user-icon patient-icon">
+                            <i class="fas fa-user-injured"></i>
+                        </div>
+                        <h3 class="feature-title">Minhas Consultas</h3>
+                        <p>Visualize e gerencie suas consultas médicas agendadas.</p>
+                        <a href="/consultas" class="btn btn-primary mt-3">Acessar</a>
+                    </div>
+                </div>
+                
+                <!-- Médico Card -->
+                <div class="col-lg-4 col-md-6" th:if="${session.usuario.tipo == 'MEDICO'}">
+                    <div class="user-card">
+                        <div class="user-icon doctor-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <h3 class="feature-title">Minha Agenda</h3>
+                        <p>Gerencie suas consultas e disponibilidade de atendimento.</p>
+                        <a href="/consultas/medico" class="btn btn-primary mt-3">Acessar</a>
+                    </div>
+                </div>
+                
+                <!-- Admin Card -->
+                <div class="col-lg-4 col-md-6" th:if="${session.usuario.tipo == 'ADMIN'}">
+                    <div class="user-card">
+                        <div class="user-icon admin-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="feature-title">Administração</h3>
+                        <p>Gerencie pacientes, médicos e configurações do sistema.</p>
+                        <div class="d-grid gap-2 mt-4">
                             <a href="/pacientes" class="btn btn-primary">Pacientes</a>
                             <a href="/medicos" class="btn btn-primary">Médicos</a>
                         </div>
@@ -48,8 +340,20 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Consulta-Medi. Todos os direitos reservados.</p>
+            <div class="mt-2">
+                <a href="/terms">Termos de Serviço</a>
+                <span> | </span>
+                <a href="/privacy">Política de Privacidade</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>

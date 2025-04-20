@@ -2,49 +2,356 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Pacientes - Sistema de Consultas Médicas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes - ConsultaMedi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4e73df;
+            --primary-dark: #3a56b2;
+            --accent: #1cc88a;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --light: #f8f9fc;
+            --dark: #2e2e2e;
+            --gray: #6c757d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            min-height: 100vh;
+        }
+
+        .container {
+            padding: 2rem 1.5rem;
+        }
+
+        .patient-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(78, 115, 223, 0.1);
+        }
+
+        .patient-header h2 {
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .patient-header h2 i {
+            margin-right: 12px;
+        }
+
+        .patient-table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        .patient-table {
+            width: 100%;
+        }
+
+        .patient-table thead th {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            font-weight: 500;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            white-space: nowrap;
+        }
+
+        .patient-table tbody tr {
+            transition: all 0.2s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .patient-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .patient-table tbody tr:hover {
+            background-color: rgba(78, 115, 223, 0.05);
+        }
+
+        .patient-table tbody td {
+            padding: 1rem;
+            vertical-align: middle;
+            white-space: nowrap;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: none;
+            color: white;
+            margin: 0 4px;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-details {
+            background-color: var(--gray);
+        }
+
+        .btn-edit {
+            background-color: var(--warning);
+        }
+
+        .search-container {
+            position: relative;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .search-input {
+            padding-left: 3rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .search-input:focus {
+            background-color: white;
+            color: var(--dark);
+            border-color: white;
+            box-shadow: none;
+        }
+
+        .search-input:focus::placeholder {
+            color: var(--gray);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+        }
+
+        .btn-new {
+            background-color: white;
+            color: var(--primary);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            border: none;
+        }
+
+        .btn-new:hover {
+            background-color: white;
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-new i {
+            margin-right: 8px;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .patient-header {
+                padding: 1.25rem;
+            }
+
+            .patient-header h2 {
+                font-size: 1.25rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .search-container {
+                max-width: 100%;
+            }
+
+            .patient-table-container {
+                padding: 1rem;
+                border-radius: 8px;
+            }
+
+            .patient-table thead th {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .patient-table tbody td {
+                padding: 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .action-btn {
+                width: 36px;
+                height: 36px;
+                margin: 0 2px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .patient-table thead th {
+                padding: 1rem 1.5rem;
+            }
+
+            .patient-table tbody td {
+                padding: 1rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div th:replace="fragments/header :: header"></div>
 
-    <div class="container mt-4">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Lista de Pacientes</h2>
-            <a href="/pacientes/novo" class="btn btn-primary">Novo Paciente</a>
+    <div class="container py-4">
+        <div class="patient-header">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center header-content">
+                <h2 class="mb-3 mb-md-0">
+                    <i class="fas fa-user-injured"></i> Lista de Pacientes
+                </h2>
+                <div class="d-flex flex-column flex-md-row gap-3 align-items-stretch w-100 w-md-auto">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="form-control search-input" placeholder="Pesquisar pacientes..." id="searchInput">
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Data de Nascimento</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="paciente : ${pacientes}">
-                        <td th:text="${paciente.nome}">Nome do Paciente</td>
-                        <td th:text="${paciente.cpf}">CPF</td>
-                        <td th:text="${paciente.email}">Email</td>
-                        <td th:text="${paciente.telefone}">Telefone</td>
-                        <td th:text="${#dates.format(paciente.dataNascimento, 'dd/MM/yyyy')}">Data de Nascimento</td>
-                        <td>
-                            <div class="btn-group">
-                                <a th:href="@{/pacientes/{id}(id=${paciente.id})}" class="btn btn-sm btn-info">Detalhes</a>
-                                <a th:href="@{/pacientes/{id}/editar(id=${paciente.id})}" class="btn btn-sm btn-warning">Editar</a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="patient-table-container">
+            <div class="table-responsive">
+                <table class="patient-table">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-user me-2"></i>Nome</th>
+                            <th><i class="fas fa-id-card me-2"></i>BI</th>
+                            <th><i class="fas fa-phone me-2"></i>Contato</th>
+                            <th><i class="fas fa-calendar-day me-2"></i>Nascimento</th>
+                            <th class="text-end"><i class="fas fa-ellipsis-h me-2"></i>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="paciente : ${pacientes}">
+                            <td>
+                                <div class="fw-semibold" th:text="${paciente.nome}"></div>
+                                <small class="text-muted" th:text="${paciente.email}"></small>
+                            </td>
+                            <td th:text="${paciente.cpf}"></td>
+                            <td th:text="${paciente.telefone}"></td>
+                            <td th:text="${#dates.format(paciente.dataNascimento, 'dd/MM/yyyy')}"></td>
+                            <td class="text-end">
+                                <div class="d-flex justify-content-end">
+                                    <a th:href="@{/pacientes/{id}(id=${paciente.id})}" 
+                                       class="action-btn btn-details"
+                                       data-bs-toggle="tooltip" 
+                                       data-bs-placement="top" 
+                                       title="Ver detalhes">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a th:href="@{/pacientes/{id}/editar(id=${paciente.id})}" 
+                                       class="action-btn btn-edit"
+                                       data-bs-toggle="tooltip" 
+                                       data-bs-placement="top" 
+                                       title="Editar paciente">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr th:if="${pacientes.empty}">
+                            <td colspan="5" class="empty-state">
+                                <i class="fas fa-user-times"></i>
+                                <h4>Nenhum paciente encontrado</h4>
+                                <p>Você ainda não possui pacientes cadastrados</p>
+                                <a href="/pacientes/novo" class="btn btn-primary mt-2">
+                                    <i class="fas fa-plus me-2"></i>Cadastrar Paciente
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Função de busca
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            let hasResults = false;
+            
+            rows.forEach(row => {
+                if (row.cells) { // Ignora a linha de estado vazio
+                    const text = row.textContent.toLowerCase();
+                    const isMatch = text.includes(searchValue);
+                    row.style.display = isMatch ? '' : 'none';
+                    if (isMatch) hasResults = true;
+                }
+            });
+
+            // Mostra mensagem se não houver resultados
+            const emptyState = document.querySelector('.empty-state');
+            if (emptyState) {
+                emptyState.style.display = hasResults || searchValue === '' ? 'none' : '';
+            }
+        });
+
+        // Inicializa tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+                new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
 </body>
-</html> 
+</html>

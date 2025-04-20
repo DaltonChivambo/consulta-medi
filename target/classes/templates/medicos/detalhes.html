@@ -2,97 +2,182 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Detalhes do Médico - Sistema de Consultas Médicas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Médico - ConsultaMedi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a5acd;  /* Violeta principal */
+            --primary-light: #7b68ee;
+            --light: #f8f9fc;
+            --dark: #2e2e2e;
+        }
+        
+        body {
+            background-color: var(--light);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .medico-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(106, 90, 205, 0.1);
+            overflow: hidden;
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1.25rem 1.5rem;
+            border-bottom: none;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+        }
+        
+        .detail-row {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .detail-value {
+            color: #555;
+        }
+        
+        .badge-status {
+            padding: 0.5em 0.75em;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        .btn-action {
+            border-radius: 8px;
+            padding: 0.5rem 1.25rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-action:hover {
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .detail-label, .detail-value {
+                padding: 0.25rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <div th:replace="fragments/header :: header"></div>
 
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="card">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="medico-card card mb-4">
                     <div class="card-header">
-                        <h3 class="card-title">Detalhes do Médico</h3>
+                        <h3 class="card-title">
+                            <i class="fas fa-user-md"></i>
+                            Detalhes do Médico
+                        </h3>
                     </div>
                     <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <strong>ID:</strong>
+                        <div class="row detail-row">
+                            <div class="col-md-4 detail-label">
+                                <i class="fas fa-id-card me-2"></i>ID:
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 detail-value">
                                 <span th:text="${medico.id}">ID do Médico</span>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <strong>Nome:</strong>
+                        <div class="row detail-row">
+                            <div class="col-md-4 detail-label">
+                                <i class="fas fa-user me-2"></i>Nome:
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 detail-value">
                                 <span th:text="${medico.nome}">Nome do Médico</span>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <strong>CRM:</strong>
+                        <div class="row detail-row">
+                            <div class="col-md-4 detail-label">
+                                <i class="fas fa-id-badge me-2"></i>CRM:
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 detail-value">
                                 <span th:text="${medico.crm}">CRM</span>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <strong>Especialidade:</strong>
+                        <div class="row detail-row">
+                            <div class="col-md-4 detail-label">
+                                <i class="fas fa-stethoscope me-2"></i>Especialidade:
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 detail-value">
                                 <span th:text="${medico.especialidade}">Especialidade</span>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <strong>Email:</strong>
+                        <div class="row detail-row">
+                            <div class="col-md-4 detail-label">
+                                <i class="fas fa-envelope me-2"></i>Email:
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 detail-value">
                                 <span th:text="${medico.email}">Email</span>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <strong>Telefone:</strong>
+                        <div class="row detail-row">
+                            <div class="col-md-4 detail-label">
+                                <i class="fas fa-phone me-2"></i>Telefone:
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-8 detail-value">
                                 <span th:text="${medico.telefone}">Telefone</span>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <div class="col-md-4">
-                                <strong>Status:</strong>
+                        <div class="row detail-row">
+                            <div class="col-md-4 detail-label">
+                                <i class="fas fa-circle me-2"></i>Status:
                             </div>
                             <div class="col-md-8">
-                                <span th:if="${medico.ativo}" class="badge bg-success">Ativo</span>
-                                <span th:unless="${medico.ativo}" class="badge bg-danger">Inativo</span>
+                                <span th:if="${medico.ativo}" class="badge bg-success badge-status">Ativo</span>
+                                <span th:unless="${medico.ativo}" class="badge bg-danger badge-status">Inativo</span>
                             </div>
                         </div>
-                        <div class="row mt-4">
-                            <div class="col-12">
-                                <div class="d-flex justify-content-between">
-                                    <a href="/medicos" class="btn btn-secondary">Voltar</a>
-                                    <div>
-                                        <a th:href="@{/medicos/{id}/editar(id=${medico.id})}" class="btn btn-warning">Editar</a>
-                                        <form th:action="@{/medicos/bloquear}" method="post" class="d-inline">
-                                            <input type="hidden" name="id" th:value="${medico.id}">
-                                            <input type="hidden" name="ativo" th:value="${!medico.ativo}">
-                                            <button type="submit" class="btn" 
-                                                    th:classappend="${medico.ativo ? 'btn-danger' : 'btn-success'}"
-                                                    th:text="${medico.ativo ? 'Desativar' : 'Ativar'}"
-                                                    onclick="return confirm('Tem certeza que deseja alterar o status deste médico?')">
-                                                Desativar
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
+                    <a href="/medicos" class="btn btn-outline-secondary btn-action">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar
+                    </a>
+                    <div class="d-flex gap-2">
+                        <a th:href="@{/medicos/{id}/editar(id=${medico.id})}" class="btn btn-warning btn-action">
+                            <i class="fas fa-edit me-2"></i>Editar
+                        </a>
+                        <form th:action="@{/medicos/bloquear}" method="post" class="d-inline">
+                            <input type="hidden" name="id" th:value="${medico.id}">
+                            <input type="hidden" name="ativo" th:value="${!medico.ativo}">
+                            <button type="submit" class="btn btn-action" 
+                                    th:classappend="${medico.ativo ? 'btn-danger' : 'btn-success'}"
+                                    onclick="return confirm('Tem certeza que deseja alterar o status deste médico?')">
+                                <i class="fas" th:classappend="${medico.ativo ? 'fa-user-slash' : 'fa-user-check'}"></i>
+                                <span th:text="${medico.ativo ? ' Desativar' : ' Ativar'}"></span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -101,4 +186,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>
