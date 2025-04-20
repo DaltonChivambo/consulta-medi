@@ -1,6 +1,6 @@
-# 🏥 Sistema de Consultas Médicas
+# 🏥 Sistema de Agendamento de Consultas Médicas Online
 
-Sistema de gerenciamento de consultas médicas utilizando Java, Spring Boot, MongoDB e CORBA, Java 8. Esta aplicação permite agendar, cancelar e visualizar consultas de forma eficiente por meio de uma interface web.
+istema de Agendamento de Consultas Médicas Online utilizando Java, Spring Boot, MongoDB e CORBA, Java 8. Esta aplicação permite agendar, cancelar e visualizar consultas de forma eficiente por meio de uma interface web.
 
 ---
 
