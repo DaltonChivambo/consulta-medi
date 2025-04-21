@@ -217,6 +217,8 @@ Verifique:
 
 
 
+
+
 > 🧪 Ambiente Testado
 
 Este sistema foi testado e validado com sucesso em:
@@ -226,6 +228,8 @@ Este sistema foi testado e validado com sucesso em:
 ✅ Java 8 com JacORB
 
 ✅ MongoDB 7.x
+
+
 
 
 
