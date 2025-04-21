@@ -1,0 +1,32 @@
+[{
+  "_id": "C1745176406537",
+  "pacienteId": "f8d4dd53-4795-493d-a9fc-041baf7033ed",
+  "pacienteNome": "Kenny Massingue",
+  "medicoId": "M1745175828821",
+  "medicoNome": "Regina Massingue",
+  "especialidade": "Psicologo(a)",
+  "data": {
+    "$date": "2025-04-22T22:00:00.000Z"
+  },
+  "hora": {
+    "$date": "2025-04-20T06:00:00.000Z"
+  },
+  "status": "CONCLUIDA",
+  "_class": "com.example.consulta.model.ConsultaMongo"
+},
+{
+  "_id": "C1745176434771",
+  "pacienteId": "f8d4dd53-4795-493d-a9fc-041baf7033ed",
+  "pacienteNome": "Kenny Massingue",
+  "medicoId": "M1745176032680",
+  "medicoNome": "Dalton Chivambo",
+  "especialidade": "Cardiologista",
+  "data": {
+    "$date": "2025-04-29T22:00:00.000Z"
+  },
+  "hora": {
+    "$date": "2025-04-20T08:00:00.000Z"
+  },
+  "status": "CANCELADA",
+  "_class": "com.example.consulta.model.ConsultaMongo"
+}]

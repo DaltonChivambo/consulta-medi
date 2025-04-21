@@ -1,0 +1,11 @@
+[{
+  "_id": "f8d4dd53-4795-493d-a9fc-041baf7033ed",
+  "nome": "Kenny Massingue",
+  "cpf": "1076765580N",
+  "email": "kenny@medi.com",
+  "telefone": "821234567",
+  "dataNascimento": {
+    "$date": "2004-10-19T22:00:00.000Z"
+  },
+  "_class": "com.example.consulta.model.PacienteMongo"
+}]

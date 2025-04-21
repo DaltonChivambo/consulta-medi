@@ -1,0 +1,40 @@
+[{
+  "_id": "M1745175828821",
+  "nome": "Regina Massingue",
+  "crm": "568900009866H",
+  "especialidade": "Psicologo(a)",
+  "email": "regina@medi.com",
+  "telefone": "821234567",
+  "ativo": true,
+  "_class": "com.example.consulta.model.MedicoMongo"
+},
+{
+  "_id": "M1745175887319",
+  "nome": "Genny Vasco",
+  "crm": "4300008767K",
+  "especialidade": "Psicologo(a)",
+  "email": "genny@medi.com",
+  "telefone": "821234567",
+  "ativo": true,
+  "_class": "com.example.consulta.model.MedicoMongo"
+},
+{
+  "_id": "M1745175964419",
+  "nome": "Kevin Uqueio",
+  "crm": "30980001000J",
+  "especialidade": "Pediatra",
+  "email": "kevin@medi.com",
+  "telefone": "821234567",
+  "ativo": true,
+  "_class": "com.example.consulta.model.MedicoMongo"
+},
+{
+  "_id": "M1745176032680",
+  "nome": "Dalton Chivambo",
+  "crm": "6000976780012F",
+  "especialidade": "Cardiologista",
+  "email": "dalton@medi.com",
+  "telefone": "821234567",
+  "ativo": true,
+  "_class": "com.example.consulta.model.MedicoMongo"
+}]

@@ -1,0 +1,76 @@
+[{
+  "_id": {
+    "$oid": "6803ef83613548178a629488"
+  },
+  "nome": "Medi",
+  "email": "admin@medi.com",
+  "senha": "$2a$10$CA5I9VGnh9RoYzfH6ZxSl./M5.MrSNyiVDkXdvifmoA712b0z23mu",
+  "tipo": "ADMIN",
+  "usuarioId": "ADMIN",
+  "ativo": true,
+  "_class": "com.example.consulta.model.Usuario"
+},
+{
+  "_id": {
+    "$oid": "68054514dacea00d28a7632b"
+  },
+  "nome": "Regina Massingue",
+  "email": "regina@medi.com",
+  "senha": "$2a$10$e7fpl.xjtSNLB80iMdaqoupKaWs8oUg5OsVPYaT1zHYK41WdH3kT2",
+  "tipo": "MEDICO",
+  "usuarioId": "M1745175828821",
+  "crm": "568900009866H",
+  "ativo": true,
+  "_class": "com.example.consulta.model.Usuario"
+},
+{
+  "_id": {
+    "$oid": "6805454fdacea00d28a7632c"
+  },
+  "nome": "Genny Vasco",
+  "email": "genny@medi.com",
+  "senha": "$2a$10$wJzSHYcuKfvYeZsfSVAgOesMKmxZSvw2IDd0Wng62rpOh75rMYavO",
+  "tipo": "MEDICO",
+  "usuarioId": "M1745175887319",
+  "crm": "4300008767K",
+  "ativo": true,
+  "_class": "com.example.consulta.model.Usuario"
+},
+{
+  "_id": {
+    "$oid": "6805459cdacea00d28a7632d"
+  },
+  "nome": "Kevin Uqueio",
+  "email": "kevin@medi.com",
+  "senha": "$2a$10$f7w7Jv3kBWAwj/VzcYxQ6.UHU8pL3ber.Phr60bbXOlhMXX2NOl8y",
+  "tipo": "MEDICO",
+  "usuarioId": "M1745175964419",
+  "crm": "30980001000J",
+  "ativo": true,
+  "_class": "com.example.consulta.model.Usuario"
+},
+{
+  "_id": {
+    "$oid": "680545e0dacea00d28a7632e"
+  },
+  "nome": "Dalton Chivambo",
+  "email": "dalton@medi.com",
+  "senha": "$2a$10$jRxPxzWbXQYzcPueqQ9Jg.FG3MuoyWNt7GKRwHEbOUzUhZ7RZ.4O2",
+  "tipo": "MEDICO",
+  "usuarioId": "M1745176032680",
+  "crm": "6000976780012F",
+  "ativo": true,
+  "_class": "com.example.consulta.model.Usuario"
+},
+{
+  "_id": {
+    "$oid": "680546dcdacea00d28a7632f"
+  },
+  "nome": "Kenny Massingue",
+  "email": "kenny@medi.com",
+  "senha": "$2a$10$Eq7lCyJf7VSZRm4.kk2jAucyB7.2tKcA9o.cIDluBHIcCePyiEoo.",
+  "tipo": "PACIENTE",
+  "usuarioId": "f8d4dd53-4795-493d-a9fc-041baf7033ed",
+  "ativo": true,
+  "_class": "com.example.consulta.model.Usuario"
+}]
