@@ -9,7 +9,6 @@ Sistema de agendamento de consultas médicas utilizando Java, Spring Boot, Mongo
 - **Java** 8 (com suporte nativo a CORBA)  
 - **Maven** 3.6 ou superior  
 - **MongoDB** instalado e rodando (`localhost:27017`)  
-- **Terminal** ou console para execução dos comandos  
 
 ---
 
