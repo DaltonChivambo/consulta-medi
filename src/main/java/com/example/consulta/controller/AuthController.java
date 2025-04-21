@@ -30,7 +30,7 @@ public class AuthController {
     @GetMapping("/login")
     public String loginForm(@RequestParam(required = false) String error, Model model) {
         if ("unauthorized".equals(error)) {
-            model.addAttribute("error", "Você não tem permissão para acessar esta página. Faça login como administrador.");
+            model.addAttribute("error", "Você não tem permissão para acessar esta página.");
         } else if ("medico_removido".equals(error)) {
             model.addAttribute("error", "Sua conta de médico foi removida do sistema. Entre em contato com o administrador.");
         }

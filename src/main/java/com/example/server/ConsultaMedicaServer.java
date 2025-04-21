@@ -38,7 +38,7 @@ class ConsultaMedicaImpl extends ConsultaMedicaPOA {
         }
 
         // Verificar se o médico existe, se não existir, criar um novo
-        if (!medico s.containsKey(medicoId)) {
+        if (!medicos.containsKey(medicoId)) {
             Medico novoMedico = new Medico();
             // Se o ID não estiver no formato correto (M + timestamp), gerar um novo
             if (!medicoId.startsWith("M") || medicoId.length() < 2) {
