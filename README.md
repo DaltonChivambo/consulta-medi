@@ -215,7 +215,17 @@ Verifique:
 
 ---
 
-> 🧪 Testado e validado no **Ubuntu 24.04 LTS**
+
+
+> 🧪 Ambiente Testado
+
+Este sistema foi testado e validado com sucesso em:
+
+✅ Ubuntu 24.04 LTS
+
+✅ Java 8 com JacORB
+
+✅ MongoDB 7.x
 
 
 
