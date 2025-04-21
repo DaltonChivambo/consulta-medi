@@ -315,7 +315,7 @@ O médico pode visualizar todas as consultas agendadas para ele.
 
 ### Alteração de Status da Consulta
 
-O médico pode alterar o status de uma consulta (confirmada, realizada, cancelada, etc.).
+O médico pode alterar o status de uma consulta (Concluida, cancelada, etc.).
 
 ![Alterar Status da Consulta](PrintScreen/009_medico_alterar_status_consulta.png)
 
@@ -341,19 +341,19 @@ O administrador pode cadastrar novos médicos no sistema.
 
 ### Detalhes do Médico
 
-O administrador pode visualizar os detalhes de um médico específico.
+O administrador pode visualizar os detalhes de um médico específico e ativa-lo ou desabilita-lo do sistema.
 
 ![Detalhes do Médico](PrintScreen/013_admin_detalhes_medico.png)
 
 ### Gerenciamento de Pacientes
 
-O administrador pode visualizar e gerenciar todos os pacientes cadastrados no sistema.
+O administrador pode visualizar todos os pacientes cadastrados no sistema.
 
 ![Gerenciamento de Pacientes](PrintScreen/014_admin_pacientes.png)
 
 ### Cadastro/Edição de Paciente
 
-O administrador pode cadastrar ou editar informações de pacientes.
+O administrador pode editar informações de pacientes.
 
 ![Edição de Paciente](PrintScreen/015_admin_editar_paciente.png)
 
