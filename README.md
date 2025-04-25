@@ -3,6 +3,14 @@
 Sistema de agendamento de consultas médicas utilizando Java, Spring Boot, MongoDB e CORBA, Java 8. Esta aplicação permite agendar, cancelar e visualizar consultas de forma eficiente por meio de uma interface web.
 
 ---
+<p align="center">
+  <b style="color: blue;">Contador de Visitantes</b>
+  <br>
+  <a href="https://github.com/DaltonChivambo/SD_CHAT_APP">
+    <img src="https://profile-counter.glitch.me/SD_CHAT_APP/count.svg" />
+  </a>
+</p>
+---
 
 ## Índice
 
