@@ -400,15 +400,3 @@ Confirme:
 
 ---
 
-## 📄 Licença
-
-Distribuído sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-
-# Apresentação da Aplicação de Consultas Médicas
-
-Este documento apresenta as principais telas da aplicação de consultas médicas, mostrando o fluxo de uso para os diferentes tipos de usuários: pacientes, médicos e administradores.
-
-
-
-
