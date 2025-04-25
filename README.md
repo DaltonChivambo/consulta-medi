@@ -6,8 +6,8 @@ Sistema de agendamento de consultas médicas utilizando Java, Spring Boot, Mongo
 <p align="center">
   <b style="color: blue;">Contador de Visitantes</b>
   <br>
-  <a href="https://github.com/DaltonChivambo/SD_CHAT_APP">
-    <img src="https://profile-counter.glitch.me/SD_CHAT_APP/count.svg" />
+  <a href="https://github.com/DaltonChivambo/consulta-medi">
+    <img src="https://profile-counter.glitch.me/consulta-medi/count.svg" />
   </a>
 </p>
 ---
